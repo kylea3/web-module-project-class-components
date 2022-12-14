@@ -1,4 +1,7 @@
 import React from 'react';
+import Todo from "./Todo";
+import TodoList from './TodoList'
+
 
 
 
@@ -9,7 +12,7 @@ export default class App extends React.Component {
       todos: [{
           task: 'Bake Cookies',
           id: 12124234234,
-          completed: false
+          completed: true
         },
       {
         task: 'Eat Cookies',
@@ -23,14 +26,8 @@ export default class App extends React.Component {
 
     return (
       <div>
-        <h1>Todo</h1>
-        <ul>
-          {todos.map(el => {
-            return (
-              <li>{el.task}{el.completed ? ' ✔' : ''}</li>
-          )}
-          )}
-        </ul>
+        <h1>Todo List</h1>
+        <TodoList todos={todos} />
 
         <form>
           <input />
