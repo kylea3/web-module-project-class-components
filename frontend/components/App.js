@@ -1,14 +1,13 @@
 import React from 'react';
-import Todo from "./Todo";
 import TodoList from './TodoList'
-
-
+import Form from './Form'
 
 
 export default class App extends React.Component {
   constructor() {
     super();
     this.state = {
+      todoInput: '',
       todos: [{
           task: 'Bake Cookies',
           id: 12124234234,
@@ -21,6 +20,15 @@ export default class App extends React.Component {
     }]
     }
   }
+
+  onClear = () => {
+    this.setState({
+    ...this.state,
+    todos: this.state.todos.filter(todo => {
+      return (todo.completed === false);
+    })
+    })
+  }
   render() {
     const { todos } = this.state;
 
@@ -28,13 +36,10 @@ export default class App extends React.Component {
       <div>
         <h1>Todo List</h1>
         <TodoList todos={todos} />
+        <Form />
+        
 
-        <form>
-          <input />
-          <button>Add</button>
-        </form>
-
-        <button>Clear</button>
+        <button onClick={this.onClear}>Clear</button>
       </div>
     );
   }
