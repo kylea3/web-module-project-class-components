@@ -29,6 +29,18 @@ export default class App extends React.Component {
     })
     })
   }
+
+  onSubmit = (task) => {
+    const newTodo = {
+      task: task,
+      id: Date.now(),
+      completed: false
+    }
+    this.setState({
+      ...this.state,
+      todos: [...this.state.todos, newTodo]
+    })
+  }
   render() {
     const { todos } = this.state;
 
@@ -36,7 +48,7 @@ export default class App extends React.Component {
       <div>
         <h1>Todo List</h1>
         <TodoList todos={todos} />
-        <Form />
+        <Form onSubmit={this.onSubmit} />
         
 
         <button onClick={this.onClear}>Clear</button>
