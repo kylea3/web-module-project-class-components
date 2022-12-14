@@ -10,6 +10,10 @@ export default class Form extends React.Component {
   onSubmit = (e) => {
     e.preventDefault();
     this.props.onSubmit(this.state.input);
+    this.setState({
+      ...this.state,
+      input: ''
+    })
   }
 
   onChange = (e) => {
