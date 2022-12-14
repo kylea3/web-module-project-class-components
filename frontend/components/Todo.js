@@ -1,9 +1,12 @@
 import React from "react";
 
 export default class Todo extends React.Component {
+  markComplete = () => {
+    this.props.markComplete(this.props.todo.id);
+  }
   render() {
     return(
-    <li>{this.props.todo.task}{this.props.todo.completed ? ' ✔' : ''}</li>
+    <li onClick={this.markComplete}>{this.props.todo.task}{this.props.todo.completed ? ' ✔' : ''}</li>
   )}
 }
 

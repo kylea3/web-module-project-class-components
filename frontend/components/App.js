@@ -41,13 +41,29 @@ export default class App extends React.Component {
       todos: [...this.state.todos, newTodo]
     })
   }
+
+  markComplete = (clickedId) => {
+    this.setState({
+      ...this.state,
+    todos: this.state.todos.map(todo => {
+      if (todo.id === clickedId) {
+        return {
+          ...todo,
+          completed: !todo.completed
+        }
+      }
+        return todo;
+      })
+    });  
+  }
+
   render() {
     const { todos } = this.state;
 
     return (
       <div>
         <h1>Todo List</h1>
-        <TodoList todos={todos} />
+        <TodoList markComplete={this.markComplete} todos={todos} />
         <Form onSubmit={this.onSubmit} />
         
 
